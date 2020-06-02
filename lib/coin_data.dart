@@ -43,7 +43,9 @@ class CoinData {
     http.Response response = await http.get(requestURL);
     if (response.statusCode == 200) {
       var decodedData = jsonDecode(response.body);
-      double lastPrice = decodedData['last'];
+      // change 'last' to 'rate'
+      double lastPrice = decodedData['rate'];
+      //double lastPrice = decodedData['last'];
       return lastPrice.toStringAsFixed(0);
     } else {
       print(response.statusCode);
